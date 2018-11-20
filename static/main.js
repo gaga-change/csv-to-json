@@ -11,7 +11,6 @@
         if (!checkIsCsv(file.name)) {
             return alert('选择的文件不是 .csv 后缀的，请重新选择！')
         }
-        console.log(file)
         upload()
     })
     
@@ -43,15 +42,21 @@
             contentType: false,
             dataType: "json",
             beforeSend: function () {
+                $('#submit').text('提交中...')
                 uploading = true;
             },
             success: function (data) {
-                console.log(data)
-                funDownload(JSON.stringify(data), 'data.json')
+                $('#submit').text('提交中')
                 uploading = false;
+                if (!data) {
+                    return alert('转换失败！')
+                }
+                funDownload(JSON.stringify(data), 'data.json')
             },
             error: function (data) {
                 alert('上传失败')
+                $('#submit').text('提交中')
+                uploading = false;  
             }
         })
     }

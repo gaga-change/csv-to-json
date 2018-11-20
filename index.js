@@ -19,7 +19,7 @@ router.post('/api/turn', async ctx => {
     const file = ctx.request.files.file;
     ctx.body = await new Promise((resolve, reject) => {
         let results = []
-        console.log('临时文件：', file.path)
+        console.log('临时文件：', file.path, ' size:', (file.size / 1024 / 1024).toFixed(2) + 'M')
         fs.createReadStream(file.path)
             .pipe(csv({
                 mapHeaders: ({
@@ -36,7 +36,6 @@ router.post('/api/turn', async ctx => {
                 resolve(results)
             });
     })
-
 })
 
 function uid() {
