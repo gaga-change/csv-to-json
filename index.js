@@ -1,6 +1,5 @@
 const csv = require('csv-parser')
 const logger = require('koa-logger')
-const os = require('os')
 const fs = require('fs')
 const Koa = require('koa')
 const serve = require('koa-static')
@@ -17,11 +16,10 @@ app.use(koaBody({
 app.use(serve(path.join(__dirname, 'static')));
 
 router.post('/api/turn', async ctx => {
-    // const tmpdir = path.join(os.tmpdir(), '123456');
-    // const files = ctx.request.body.files || {};
     const file = ctx.request.files.file;
     ctx.body = await new Promise((resolve, reject) => {
         let results = []
+        console.log('临时文件：', file.path)
         fs.createReadStream(file.path)
             .pipe(csv({
                 mapHeaders: ({
