@@ -16,11 +16,14 @@
     <a href="https://github.com/gaga-change/csv-to-json" target="blank"><img style="position: absolute; top: 0; right: 0; border: 0;"
             src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
     <div class="container">
-        <div class="row">
+        <h1>
+            在线csv转json
+        </h1>
+        <div class="row mt-3">
             <div class="col">
                 <form id="formControl">
                     <div class="form-group">
-                        <label for="formControlFile">上传文件</label>
+                        <label for="formControlFile">上传文件(如果有中文，调整文件编码为UTF-8)</label>
                         <input type="file" class="form-control-file" name="file" id="formControlFile">
                     </div>
                     <button id="submit" type="submit" class="btn btn-primary ">提交</button>
@@ -45,4 +48,5 @@
         s.parentNode.insertBefore(bp, s);
     })();
 </script>
+
 </html>
