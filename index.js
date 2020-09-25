@@ -6,7 +6,7 @@ const serve = require('koa-static')
 const router = require('koa-router')()
 const path = require('path')
 const koaBody = require('koa-body')
-
+const { PORT } = require('./config')
 const app = new Koa()
 app.use(logger());
 
@@ -44,6 +44,6 @@ function uid() {
 
 app.use(router.routes())
 
-app.listen(3000, function () {
-    console.log('listening http://localhost:3000')
+app.listen(PORT, function () {
+    console.log(`listening http://localhost:${PORT}`)
 })
